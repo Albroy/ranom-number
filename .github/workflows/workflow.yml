@@ -39,6 +39,33 @@ jobs:
         with:
           dockerfile: Dockerfile
 
+  lint-and-test2:
+    name:    Lint et test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Installation de Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Installation des dépendances JavaScript
+        run:  npm install
+
+      - name: Lint du fichier index.js
+        run:  npm run lint-index
+
+      - name: Lint du fichier test.js
+        run:  npm run lint-test
+
+      - name: Lint du fichier Dockerfile
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
+
   build-image-on-pr:
     name: [Pull request] Build de l'image youpidok/random-number
     runs-on: ubuntu-latest
