@@ -90,8 +90,17 @@ jobs:
       - name: Build youpidok/random-number:latest
         run: docker build --rm -t youpidok/random-number:latest .
 
+      - name: Connexion à Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: youpidok
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Push youpidok/random-number:latest
+        run: docker push youpidok/random-number:latest
+
   deploy-image-on-tag:
-    name: Tag - Push youpidok/random-number:${{github.ref_name}}
+    name: Tag - Push youpidok/random-number:tag
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref_type == 'tag'
     needs:
@@ -106,3 +115,15 @@ jobs:
 
       - name: Build youpidok/random-number:${{github.ref_name}}
         run: docker build --rm -t youpidok/random-number:${{github.ref_name}} .
+
+      - name: Connexion à Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: youpidok
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Tag youpidok/random-number:${{github.ref_name}}
+        run: docker tag youpidok/random-number:${{github.ref_name}} youpidok/random-number:${{github.ref_name}}
+
+      - name: Push youpidok/random-number:${{github.ref_name}}
+        run: docker push youpidok/random-number:${{github.ref_name}}
