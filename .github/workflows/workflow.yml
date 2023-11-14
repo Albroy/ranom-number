@@ -40,28 +40,28 @@ jobs:
           dockerfile: Dockerfile
 
   build-image-on-pr:
-    name: Build de l'image youpidok/random-number
+    name: PR - Build youpidok/random-number
     runs-on: ubuntu-latest
-#    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request'
     needs: lint-and-test
     steps:
       - name: Build de l'image
         run: echo "Build youpidok/random-number"
 
-#  deploy-image-on-main-push:
-#    name: [Push sur main] Push de l'image youpidok/random-number:latest
-#    runs-on: ubuntu-latest
-#    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-#    needs: lint-and-test
-#    steps:
-#      - name: Push de l'image latest
-#        run: echo "Push youpidok/random-number:latest"
-#
-#  deploy-image-on-tag:
-#    name: [Tag] Push de l'image youpidok/random-number:tag
-#    runs-on: ubuntu-latest
-#    if: github.event_name == 'push' && github.ref_type == 'tag'
-#    needs: lint-and-test
-#    steps:
-#      - name: Push de l'image tag
-#        run: echo "Push youpidok/random-number:${{ github.ref }}"
+  deploy-image-on-main-push:
+    name: Push main - Push youpidok/random-number:latest
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: lint-and-test
+    steps:
+      - name: Push de l'image latest
+        run: echo "Push youpidok/random-number:latest"
+
+  deploy-image-on-tag:
+    name: Tag - Push youpidok/random-number:tag
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref_type == 'tag'
+    needs: lint-and-test
+    steps:
+      - name: Push de l'image tag
+        run: echo "Push youpidok/random-number:${{ github.ref }}"
