@@ -93,7 +93,6 @@ Lors d'un **push/merge** sur la branch **main** :
 - lint
 - test
 - build l'image [youpidok/random-number](https://hub.docker.com/r/youpidok/random-number/tags)
-- tag l'image [youpidok/random-number:latest](https://hub.docker.com/r/youpidok/random-number/tags)
 - push l'image [youpidok/random-number:latest](https://hub.docker.com/r/youpidok/random-number/tags) sur Docker Hub
 
 ### Livraison Continue

@@ -78,6 +78,12 @@ jobs:
       - name: Push de l'image latest
         run: echo "Push youpidok/random-number:latest"
 
+      - name: Installation de  docker
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build youpidok/random-number:latest
+        run: docker build --rm -t youpidok/random-number:latest .
+
   deploy-image-on-tag:
     name: Tag - Push youpidok/random-number:tag
     runs-on: ubuntu-latest
