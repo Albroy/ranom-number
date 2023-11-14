@@ -25,8 +25,14 @@ jobs:
         with:
          node-version: 20
 
-      - name: node test
-        run: node -v
+      - name: Installation des dépendances javascript
+        run: npm install
 
-      - name: npm test
-        run: npm -v
+      - name: Lint du fchier index.js
+        run: npm run lint-index
+
+      - name: Lint du fchier test.js
+        run: npm run lint-test
+
+      - name: Lint du fchier Dockerfile
+        run: hadolint Dockerfile
