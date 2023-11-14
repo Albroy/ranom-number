@@ -33,12 +33,15 @@ Lint le fchier [index.js](src/index.js) en mode ES6
 ```shell
 npm run start
 ```
+Lint le Dockerfile
+```shell
+hadolint Dockerfile
+```
 ### Start
-Démarrer le projet sur le port [3000](http://localhost:3000)
+Démarrer l'application sur le port [3000](http://localhost:3000)
 ```shell
 npm run start
 ```
-
 
 ## Docker
 ### Build
@@ -46,5 +49,8 @@ npm run start
 docker build --rm -t youpidok/random-number .
 ```
 ### Run
-### 
+```shell
+docker run --name random-number -p 3000:3000 -d youpidok/random-number 
+```
+
 ## CI/CD
