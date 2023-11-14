@@ -39,14 +39,14 @@ jobs:
         with:
           dockerfile: Dockerfile
 
-#  build-image-on-pr:
-#    name: [Pull request] Build de l'image youpidok/random-number
-#    runs-on: ubuntu-latest
-#    if: github.event_name == 'pull_request'
-#    needs: lint-and-test
-#    steps:
-#      - name: Build de l'image
-#        run: echo "Build youpidok/random-number"
+  build-image-on-pr:
+    name: [Pull request] Build de l'image youpidok/random-number
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    needs: lint-and-test
+    steps:
+      - name: Build de l'image
+        run: echo "Build youpidok/random-number"
 
   deploy-image-on-main-push:
     name: [Push sur main] Push de l'image youpidok/random-number:latest
@@ -64,4 +64,5 @@ jobs:
     needs: lint-and-test
     steps:
       - name: Push de l'image tag
-        run: echo "Push youpidok/random-number:${{ github.ref }}"
+        run: |
+              echo "Push youpidok/random-number:${{ github.ref }}"
