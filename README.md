@@ -29,11 +29,15 @@ Elle génère un entier aléatoire compris entre 1 et 100 et le renvoie au forma
 npm install
 ```
 ### Lint
-Lint le fchier [index.js](src/index.js) en mode ES6
+Lint le fchier [index.js](src/index.js)
 ```shell
-npm run start
+npm run lient-index
 ```
-Lint le Dockerfile
+Lint le fchier [test.js](test/test.js)
+```shell
+npm run lint-test
+```
+Lint le [Dockerfile](Dockerfile)
 ```shell
 hadolint Dockerfile
 ```

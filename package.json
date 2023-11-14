@@ -5,8 +5,10 @@
     "node": ">=20.0"
   },
   "scripts": {
-    "lint": "jshint src/index.js",
-    "start": "node src/index.js"
+    "lint-index": "jshint src/index.js",
+    "lint-test": "jshint src/index.js",
+    "start": "node src/index.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,7 @@
   "homepage": "https://github.com/YOUPIDOK/ranom-number#readme",
   "devDependencies": {
     "jest": "^29.7.0",
-    "jshint": "^2.13.6"
+    "jshint": "^2.13.6",
+    "supertest": "^6.3.3"
   }
 }
