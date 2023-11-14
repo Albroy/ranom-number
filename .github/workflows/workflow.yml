@@ -34,6 +34,59 @@ jobs:
       - name: Lint du fchier test.js
         run: npm run lint-test
 
-      - uses: hadolint/hadolint-action@v3.1.0
+      - name: Lint du fichier Dockerfile
+        uses: hadolint/hadolint-action@v3.1.0
         with:
           dockerfile: Dockerfile
+
+  build-image-on-pr:
+    name: [Pull request] Build de l'image youpidok/random-number
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    needs: lint-and-test
+    steps:
+      - name: Test
+        run: echo "build youpidok/random-number"
+
+  deploy-image-on-main-push:
+    name: [ Push sur main ] Push de l'image youpidok/random-number:latest
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: lint-and-test
+    steps:
+      - name: Test
+        run: echo "push youpidok/random-number:latest"
+
+  deploy-image-on-tag:
+    name: [ Tag ] Push de l'image youpidok/random-number:tag
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref_type == 'tag'
+    needs: lint-and-test
+    steps:
+      - name: Test
+        run: echo "push youpidok/random-number:{{ github.ref }}"
+
+
+
+
+
+
+
+
+    #      name: Login to Docker Hub
+#      uses: docker/login-action@v3
+#      with:
+#        username: ${{ secrets.DOCKERHUB_USERNAME }}
+#        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    # ... étapes spécifiques pour le déploiement sur PR ...
+
+#  deploy-on-main:
+#    name:    Deploy on Main
+#    runs-on: ubuntu-latest
+#
+#    if:      github.event_name == 'push' && github.ref == 'refs/heads/main'
+#
+#    needs:   lint-and-test
+#
+#    steps:
+#    # ... étapes spécifiques pour le déploiement sur la branche principale ...

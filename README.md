@@ -89,12 +89,12 @@ Lors d'une **pull request** :
 - test
 - build de l'image [youpidok/random-number](https://hub.docker.com/r/youpidok/random-number/tags)
 ### Déploiement Continu
-Lors d'un **push** sur la branch **main** :
+Lors d'un **push/merge** sur la branch **main** :
 - lint
 - test
 - build l'image [youpidok/random-number](https://hub.docker.com/r/youpidok/random-number/tags)
 - tag l'image [youpidok/random-number:latest](https://hub.docker.com/r/youpidok/random-number/tags)
-- push l'image [youpidok/random-number:latest](https://hub.docker.com/r/youpidok/random-number/tags) sur docker hub
+- push l'image [youpidok/random-number:latest](https://hub.docker.com/r/youpidok/random-number/tags) sur Docker Hub
 
 ### Livraison Continue
 Lors d'un **push** de **tag** :
@@ -102,4 +102,4 @@ Lors d'un **push** de **tag** :
 - test
 - build l'image [youpidok/random-number](https://hub.docker.com/r/youpidok/random-number/tags)
 - tag l'image [youpidok/random-number:tag](https://hub.docker.com/r/youpidok/random-number/tags)
-- push l'image [youpidok/random-number:tag](https://hub.docker.com/r/youpidok/random-number/tags) sur docker hub
+- push l'image [youpidok/random-number:tag](https://hub.docker.com/r/youpidok/random-number/tags) sur Docker Hub
