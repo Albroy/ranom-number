@@ -40,7 +40,7 @@ jobs:
           dockerfile: Dockerfile
 
   build-image-on-pr:
-    name: Build de l'image youpidok
+    name: Build de l'image youpidok/random-number
     runs-on: ubuntu-latest
 #    if: github.event_name == 'pull_request'
     needs: lint-and-test
