@@ -18,20 +18,20 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
-      - name: Installation de node 20
-        uses: actions/setup-node@v4
+      - name: Installation de Node.js
+        uses: actions/setup-node@v3
         with:
-         node-version: 20
+          node-version: 14
 
-      - name: Installation des dépendances javascript
+      - name: Installation des dépendances JavaScript
         run: npm install
 
-      - name: Lint du fchier index.js
+      - name: Lint du fichier index.js
         run: npm run lint-index
 
-      - name: Lint du fchier test.js
+      - name: Lint du fichier test.js
         run: npm run lint-test
 
       - name: Lint du fichier Dockerfile
@@ -45,48 +45,23 @@ jobs:
     if: github.event_name == 'pull_request'
     needs: lint-and-test
     steps:
-      - name: Test
-        run: echo "build youpidok/random-number"
+      - name: Build de l'image
+        run: echo "Build youpidok/random-number"
 
   deploy-image-on-main-push:
-    name: [ Push sur main ] Push de l'image youpidok/random-number:latest
+    name: [Push sur main] Push de l'image youpidok/random-number:latest
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: lint-and-test
     steps:
-      - name: Test
-        run: echo "push youpidok/random-number:latest"
+      - name: Push de l'image latest
+        run: echo "Push youpidok/random-number:latest"
 
   deploy-image-on-tag:
-    name: [ Tag ] Push de l'image youpidok/random-number:tag
+    name: [Tag] Push de l'image youpidok/random-number:tag
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref_type == 'tag'
     needs: lint-and-test
     steps:
-      - name: Test
-        run: echo "push youpidok/random-number:{{ github.ref }}"
-
-
-
-
-
-
-
-
-    #      name: Login to Docker Hub
-#      uses: docker/login-action@v3
-#      with:
-#        username: ${{ secrets.DOCKERHUB_USERNAME }}
-#        password: ${{ secrets.DOCKERHUB_TOKEN }}
-    # ... étapes spécifiques pour le déploiement sur PR ...
-
-#  deploy-on-main:
-#    name:    Deploy on Main
-#    runs-on: ubuntu-latest
-#
-#    if:      github.event_name == 'push' && github.ref == 'refs/heads/main'
-#
-#    needs:   lint-and-test
-#
-#    steps:
-#    # ... étapes spécifiques pour le déploiement sur la branche principale ...
+      - name: Push de l'image tag
+        run: echo "Push youpidok/random-number:${{ github.ref }}"
