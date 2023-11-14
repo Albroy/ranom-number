@@ -11,5 +11,9 @@ describe('Integration Test', () => {
     expect(response.body).toHaveProperty('min');
     expect(response.body).toHaveProperty('max');
     expect(response.body).toHaveProperty('random_number');
+
+    expect(typeof response.body.min).toBe('number');
+    expect(typeof response.body.max).toBe('number');
+    expect(typeof response.body.random_number).toBe('number');
   });
 });

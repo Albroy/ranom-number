@@ -29,32 +29,77 @@ Elle génère un entier aléatoire compris entre 1 et 100 et le renvoie au forma
 npm install
 ```
 ### Lint
-Lint le fchier [index.js](src/index.js)
+Lint du fchier [index.js](src/index.js)
 ```shell
 npm run lient-index
 ```
-Lint le fchier [test.js](test/test.js)
+Lint du fchier [test.js](test/test.js)
 ```shell
 npm run lint-test
 ```
-Lint le [Dockerfile](Dockerfile)
+Lint du fichier [Dockerfile](Dockerfile)
 ```shell
 hadolint Dockerfile
 ```
 ### Start
-Démarrer l'application sur le port [3000](http://localhost:3000)
+Démarre l'application sur le port [3000](http://localhost:3000)
 ```shell
 npm run start
 ```
-
-## Docker
-### Build
+### Test
+Test que le endpoint http://localhost:3000 renvoi bien un JSON ayant cette structure
+```json
+{
+    "min": number,
+    "max": number,
+    "random_number": number
+}
 ```
-docker build --rm -t youpidok/random-number .
+```shell
+npm run test
+```
+## Docker
+> Image : [youpidok/random-number](https://hub.docker.com/r/youpidok/random-number/tags)
+### Build
+```shell
+docker build --rm -t random-number .
 ```
 ### Run
 ```shell
-docker run --name random-number -p 3000:3000 -d youpidok/random-number 
+docker run --name random-number -p 3000:3000 -d random-number 
 ```
-
+### Tag
+```shell
+docker tag random-number youpidok/random-number:tag
+```
+### Push
+```shell
+docker push youpidok/random-number:tag
+```
 ## CI/CD
+> Livrable : Image docker [youpidok/random-number](https://hub.docker.com/r/youpidok/random-number/tags)
+
+> Github [Actions](https://github.com/YOUPIDOK/ranom-number/actions)
+
+> Configuration du [workflow](.github/workflows/workflow.yml) 
+
+### Intégration continu
+Lors d'une **pull request** :
+- lint
+- test
+- build de l'image [youpidok/random-number](https://hub.docker.com/r/youpidok/random-number/tags)
+### Déploiement Continu
+Lors d'un **push** sur la branch **main** :
+- lint
+- test
+- build l'image [youpidok/random-number](https://hub.docker.com/r/youpidok/random-number/tags)
+- tag l'image [youpidok/random-number:latest](https://hub.docker.com/r/youpidok/random-number/tags)
+- push l'image [youpidok/random-number:latest](https://hub.docker.com/r/youpidok/random-number/tags) sur docker hub
+
+### Livraison Continue
+Lors d'un **push** de **tag** :
+- lint
+- test
+- build l'image [youpidok/random-number](https://hub.docker.com/r/youpidok/random-number/tags)
+- tag l'image [youpidok/random-number:tag](https://hub.docker.com/r/youpidok/random-number/tags)
+- push l'image [youpidok/random-number:tag](https://hub.docker.com/r/youpidok/random-number/tags) sur docker hub
