@@ -1,0 +1,25 @@
+{
+  "name": "ranom-number",
+  "description": "Random number API",
+  "engines": {
+    "node": ">=20.0"
+  },
+  "scripts": {
+    "lint": "jshint src/index.js",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YOUPIDOK/ranom-number.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YOUPIDOK/ranom-number/issues"
+  },
+  "homepage": "https://github.com/YOUPIDOK/ranom-number#readme",
+  "devDependencies": {
+    "jshint": "^2.13.6"
+  }
+}
