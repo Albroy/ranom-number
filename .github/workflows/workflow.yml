@@ -13,9 +13,8 @@ on:
 
 jobs:
   lint-and-test:
-    name: Lint et test
+    name: Lint
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -23,27 +22,47 @@ jobs:
       - name: Installation de Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 20
 
       - name: Installation des dépendances JavaScript
-        run: npm install
+        run:  npm install
 
       - name: Lint du fichier index.js
-        run: npm run lint-index
+        run:  npm run lint-index
 
       - name: Lint du fichier test.js
-        run: npm run lint-test
+        run:  npm run lint-test
 
       - name: Lint du fichier Dockerfile
         uses: hadolint/hadolint-action@v3.1.0
         with:
           dockerfile: Dockerfile
 
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Installation de Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Installation des dépendances JavaScript
+        run:  npm install
+
+      - name: Test
+        run: npm run test
+
   build-image-on-pr:
     name: PR - Build youpidok/random-number
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
-    needs: lint-and-test
+    needs:
+      - lint
+      - test
     steps:
       - name: Build de l'image
         run: echo "Build youpidok/random-number"
@@ -52,7 +71,9 @@ jobs:
     name: Push main - Push youpidok/random-number:latest
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: lint-and-test
+    needs:
+      - lint
+      - test
     steps:
       - name: Push de l'image latest
         run: echo "Push youpidok/random-number:latest"
@@ -61,7 +82,9 @@ jobs:
     name: Tag - Push youpidok/random-number:tag
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref_type == 'tag'
-    needs: lint-and-test
+    needs:
+      - lint
+      - test
     steps:
       - name: Push de l'image tag
         run: echo "Push youpidok/random-number:${{ github.ref }}"
