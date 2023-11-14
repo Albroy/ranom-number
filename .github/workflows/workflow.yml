@@ -1,0 +1,26 @@
+name: CI/CD Workflow
+
+on:
+  pull_request:
+    branches:
+      - '*'
+
+  push:
+    branches:
+      - main
+    tags:
+      - '*'
+
+jobs:
+  lint-and-test:
+    runs-on: node:20
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: node test
+        run: node -v
+
+      - name: npm test
+        run: npm -v
