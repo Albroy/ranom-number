@@ -12,7 +12,7 @@ on:
       - '*'
 
 jobs:
-  lint-and-test:
+  lint:
     name: Lint
     runs-on: ubuntu-latest
     steps:
