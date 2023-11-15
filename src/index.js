@@ -13,7 +13,8 @@ const server = http.createServer((req, res) => {
   res.end(JSON.stringify({
     min,
     max,
-    random_number: Math.floor(Math.random() * (max - min + 1)) + min
+    random_number: Math.floor(Math.random() * (max - min + 1)) + min, 
+    test: 'test'
   }));
 });
 
