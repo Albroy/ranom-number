@@ -1,14 +1,5 @@
-name-template: 'v$RESOLVED_VERSION'
-tag-template: 'v$RESOLVED_VERSION'
+name-template: 'v$TAG_NAME'
+tag-template: 'v$TAG_NAME'
 template: |
                ## Changes
-               
                $CHANGES
-               
-               ## Contributors
-               
-               $CONTRIBUTORS
-               
-               ## Commits
-               
-               $COMMITS

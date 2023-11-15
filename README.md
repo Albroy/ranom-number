@@ -85,20 +85,21 @@ docker push youpidok/random-number:tag
 
 ### Intégration continu
 Lors d'une **pull request**:
-- lint
-- test
-- build de l'image [youpidok/random-number](https://hub.docker.com/r/youpidok/random-number/tags)
+- Lint
+- Test
+- Build de l'image [youpidok/random-number](https://hub.docker.com/r/youpidok/random-number/tags)
 ### Déploiement Continu
 Lors d'un **push/merge** sur la branch **main** :
-- lint
-- test
-- build l'image [youpidok/random-number](https://hub.docker.com/r/youpidok/random-number/tags)
-- push l'image [youpidok/random-number:latest](https://hub.docker.com/r/youpidok/random-number/tags) sur Docker Hub
+- Lint
+- Test
+- Build l'image [youpidok/random-number](https://hub.docker.com/r/youpidok/random-number/tags)
+- Push l'image [youpidok/random-number:latest](https://hub.docker.com/r/youpidok/random-number/tags) sur Docker Hub
 
 ### Livraison Continue
 Lors d'un **push** de **tag** :
-- lint
-- test
-- build l'image [youpidok/random-number](https://hub.docker.com/r/youpidok/random-number/tags)
-- tag l'image [youpidok/random-number:tag](https://hub.docker.com/r/youpidok/random-number/tags)
-- push l'image [youpidok/random-number:tag](https://hub.docker.com/r/youpidok/random-number/tags) sur Docker Hub
+- Lint
+- Test
+- Build l'image [youpidok/random-number](https://hub.docker.com/r/youpidok/random-number/tags)
+- Tag l'image [youpidok/random-number:tag](https://hub.docker.com/r/youpidok/random-number/tags)
+- Push l'image [youpidok/random-number:tag](https://hub.docker.com/r/youpidok/random-number/tags) sur Docker Hub
+- Génération des notes de [releases](https://github.com/YOUPIDOK/ranom-number/releases)
