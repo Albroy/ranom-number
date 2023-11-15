@@ -1,7 +1,14 @@
 name-template: v${{MAJOR}}.${{MINOR}}.${{PATCH}}
 tag-template: v${{MAJOR}}.${{MINOR}}.${{PATCH}}
-categories:
-  - title: '🚀 Features'
-    label: 'feature'
-  - title: '🐛 Bug Fixes'
-    label: 'bug'
+template: |
+               ## Changes
+               
+               $CHANGES
+               
+               ## Contributors
+               
+               $CONTRIBUTORS
+               
+               ## Commits
+               
+               $COMMITS
