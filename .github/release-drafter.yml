@@ -1,8 +1,5 @@
 name: $RESOLVED_VERSION
 tag_name: $RESOLVED_VERSION
-template: |
-               ## Changes
-               $CHANGES
 
 version-resolver:
   major:
@@ -15,3 +12,7 @@ version-resolver:
     labels:
       - 'patch'
   default: patch
+
+  template: |
+            ## Changes
+            $CHANGES
