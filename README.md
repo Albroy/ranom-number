@@ -84,7 +84,7 @@ docker push youpidok/random-number:tag
 > Configuration du [workflow](.github/workflows/workflow.yml) 
 
 ### Intégration continu
-Lors d'une **pull request** :
+Lors d'une **pull request**:
 - lint
 - test
 - build de l'image [youpidok/random-number](https://hub.docker.com/r/youpidok/random-number/tags)
