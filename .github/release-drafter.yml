@@ -13,6 +13,6 @@ version-resolver:
       - 'patch'
   default: patch
 
-  template: |
-            ## Changes
-            $CHANGES
+template: |
+          ## Changes
+          $CHANGES
