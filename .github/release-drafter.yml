@@ -1,5 +1,17 @@
-name-template: 'v$TAG_NAME'
-tag-template: 'v$TAG_NAME'
+name: $RESOLVED_VERSION
+tag_name: $RESOLVED_VERSION
 template: |
                ## Changes
                $CHANGES
+
+version-resolver:
+  major:
+    labels:
+      - 'major'
+  minor:
+    labels:
+      - 'minor'
+  patch:
+    labels:
+      - 'patch'
+  default: patch
