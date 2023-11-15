@@ -131,7 +131,7 @@ jobs:
       - name: Génération des notes de la release ${{github.ref_name}}
         uses: release-drafter/release-drafter@v5
         with:
-          name: v${{ secrets.ACCESS_GITHUB_TOKEN }}
-          tag: ${{ secrets.ACCESS_GITHUB_TOKEN }}
+          name: v${{github.ref_name}}
+          tag: ${{github.ref_name}}
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_GITHUB_TOKEN }}
